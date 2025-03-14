@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragment.LoveTestFragment"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/txtLoveTest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Love Test"
+        android:textSize="20sp"
+        android:fontFamily="@font/plusjakartasans"
+        android:textColor="#1E232E"
+        android:textFontWeight="600"
+        android:layout_marginTop="25dp"/>
+
+
+    <RelativeLayout
+        android:id="@+id/rlNametest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="79dp"
+        android:background="@drawable/bg_gray"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name Test"
+            android:textColor="#1E232E"
+            android:textSize="20sp"
+            android:textFontWeight="600"
+            android:fontFamily="@font/plusjakartasans"/>
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Discover your compatibility by entering your name"
+            android:textColor="#4B4F58"
+            android:textSize="12sp"
+            android:textFontWeight="400"
+            android:fontFamily="@font/plusjakartasans"
+            android:layout_marginTop="36dp"/>
+        
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/ic_nametest"
+            android:layout_marginLeft="242dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlHoroscope"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="220dp"
+        android:background="@drawable/bg_gray"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Horoscope Test"
+            android:textColor="#1E232E"
+            android:textSize="20sp"
+            android:textFontWeight="600"
+            android:fontFamily="@font/plusjakartasans"/>
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Try a cute zodiac compatibility test with your crush"
+            android:textColor="#4B4F58"
+            android:textSize="12sp"
+            android:textFontWeight="400"
+            android:fontFamily="@font/plusjakartasans"
+            android:layout_marginTop="36dp"/>
+
+        <ImageView
+            android:id="@+id/imghoroscope"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/ic_horoscope"
+            android:layout_marginLeft="242dp"/>
+
+    </RelativeLayout>
+
+
+</FrameLayout>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_radius_top"
+    android:paddingHorizontal="20dp">
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:src="@drawable/ic_dot"
+        android:layout_marginVertical="12dp"
+        android:layout_gravity="center_horizontal"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose your background"
+        android:textColor="#1E232E"
+        android:textSize="16sp"
+        android:textFontWeight="600"
+        android:fontFamily="@font/plusjakartasans"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="24dp" />
+
+</LinearLayout>

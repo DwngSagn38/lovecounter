@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "741042360907",
+    "project_id": "lovecountapp",
+    "storage_bucket": "lovecountapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:741042360907:android:3fd77fedb0cd5b885333ce",
+        "android_client_info": {
+          "package_name": "com.example.applove"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfAVZy3ul0gGNndA-JRyykol-AH2uwJ0k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

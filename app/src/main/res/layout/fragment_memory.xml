@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragment.MemoryFragment"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Memory"
+        android:textSize="20sp"
+        android:fontFamily="@font/plusjakartasans"
+        android:textColor="#1E232E"
+        android:textFontWeight="600"
+        android:layout_marginTop="25dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+        
+        <ImageView
+            android:layout_width="215dp"
+            android:layout_height="162dp"
+            android:layout_marginTop="107dp"
+            android:src="@drawable/img_memory"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No anniversary"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:textFontWeight="600"
+            android:fontFamily="@font/plusjakartasans"
+            android:layout_marginTop="18dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Preserve your unforgettable anniversary here!"
+            android:textSize="14sp"
+            android:textColor="#4B4F58"
+            android:textFontWeight="400"
+            android:fontFamily="@font/plusjakartasans"
+            android:layout_marginTop="4dp"/>
+
+        <ImageView
+            android:id="@+id/btnAdd"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/img_add"
+            android:layout_marginTop="36dp"/>
+    </LinearLayout>
+</FrameLayout>

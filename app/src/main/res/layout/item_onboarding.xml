@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="20dp">
+
+    <ImageView
+        android:id="@+id/imgOnboarding"
+        android:layout_width="360dp"
+        android:layout_height="292dp"
+        android:src="@drawable/ic_onboarding1" />
+
+    <TextView
+        android:id="@+id/txtTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test Your Relationship"
+        android:textSize="24sp"
+        android:layout_marginTop="26dp"
+        android:textFontWeight="600"
+        android:fontFamily="@font/plusjakartasans"/>
+
+    <TextView
+        android:id="@+id/txtDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Find out your love compatibility \n
+ with your partner"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:fontFamily="@font/plusjakartasans"
+        android:textFontWeight="400"
+        android:layout_marginTop="12dp"/>
+</LinearLayout>

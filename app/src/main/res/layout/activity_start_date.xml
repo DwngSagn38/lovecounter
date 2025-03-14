@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".ui.startdate.StartDateActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="15dp">
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/back"
+            android:id="@+id/ic_back"/>
+        
+        <TextView
+            android:id="@+id/txtTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="Start Date"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:textFontWeight="600"
+            android:fontFamily="@font/plusjakartasans"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/llSetDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_input"
+        android:layout_marginTop="30dp"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:padding="12dp"
+            android:textSize="16sp"
+            android:text="Date of love"
+            android:textFontWeight="500"
+            android:fontFamily="@font/plusjakartasans"
+            android:textColor="#1E232E"/>
+
+        <TextView
+            android:id="@+id/txtDate"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:padding="12dp"
+            android:textSize="16sp"
+            android:textFontWeight="500"
+            android:fontFamily="@font/plusjakartasans"
+            android:textColor="#1E232E"
+            android:textAlignment="viewEnd"
+            android:layout_marginEnd="24dp"/>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_select"
+            android:layout_marginTop="14dp"
+            android:layout_marginStart="336dp"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btnDone"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Done"
+            android:layout_gravity="bottom"
+            android:textColor="@color/white"
+            android:background="@drawable/bg_btn"
+            android:backgroundTint="@color/red"
+            android:textAllCaps="false"
+            android:layout_marginTop="22dp"
+            android:layout_marginBottom="30dp"/>
+    </LinearLayout>
+</LinearLayout>

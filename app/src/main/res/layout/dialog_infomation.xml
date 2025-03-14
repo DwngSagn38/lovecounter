@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_radius_top"
+    android:paddingHorizontal="20dp">
+    
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:src="@drawable/ic_dot"
+        android:layout_marginVertical="12dp"
+        android:layout_gravity="center_horizontal"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Information"
+        android:textColor="#1E232E"
+        android:textSize="16sp"
+        android:textFontWeight="600"
+        android:fontFamily="@font/plusjakartasans"/>
+
+    <ImageView
+        android:id="@+id/imgGender"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/img_male"
+        android:layout_marginTop="36dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/circle_image"
+        android:scaleType="centerCrop"
+        android:clipToOutline="true"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tap to change photo"
+        android:textColor="#4B4F58"
+        android:textSize="14sp"
+        android:textFontWeight="400"
+        android:fontFamily="@font/plusjakartasans"
+        android:textAlignment="center"
+        android:layout_marginTop="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textColor="#1E232E"
+        android:textSize="14sp"
+        android:textFontWeight="400"
+        android:fontFamily="@font/plusjakartasans"
+        android:layout_marginTop="22dp"/>
+
+    <EditText
+        android:id="@+id/edtName"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@drawable/btn_input"
+        android:layout_marginTop="8dp"
+        android:padding="12dp"
+        android:textFontWeight="400"
+        android:textSize="14sp"
+        android:fontFamily="@font/plusjakartasans"
+        android:textColor="#1E232E"
+        android:imeOptions="actionNext"
+        android:inputType="text"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gender"
+        android:textColor="#1E232E"
+        android:textSize="14sp"
+        android:textFontWeight="400"
+        android:fontFamily="@font/plusjakartasans"
+        android:layout_marginTop="16dp"/>
+
+    <RelativeLayout
+        android:id="@+id/imgSelectGender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:imeOptions="actionNext">
+        <TextView
+            android:id="@+id/edtGender"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="@drawable/btn_input"
+            android:layout_marginTop="8dp"
+            android:padding="12dp"
+            android:textSize="14sp"
+            android:textFontWeight="400"
+            android:fontFamily="@font/plusjakartasans"
+            android:textColor="#1E232E"/>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_select"
+            android:layout_marginTop="18dp"
+            android:layout_marginStart="340dp"/>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Birthday"
+        android:textColor="#1E232E"
+        android:textSize="14sp"
+        android:textFontWeight="400"
+        android:fontFamily="@font/plusjakartasans"
+        android:layout_marginTop="16dp"/>
+
+    <RelativeLayout
+        android:id="@+id/imgCalendar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/edtBirthday"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="@drawable/btn_input"
+            android:layout_marginTop="8dp"
+            android:padding="12dp"
+            android:textFontWeight="400"
+            android:textSize="14sp"
+            android:fontFamily="@font/plusjakartasans"
+            android:textColor="#1E232E"/>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_calendar"
+            android:layout_marginTop="18dp"
+            android:layout_marginStart="340dp"/>
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="Save"
+        android:textColor="@color/white"
+        android:background="@drawable/bg_btn"
+        android:backgroundTint="@color/red"
+        android:textAllCaps="false"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="30dp"/>
+
+</LinearLayout>

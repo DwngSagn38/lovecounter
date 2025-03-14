@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.splash.SplashActivity"
+    android:gravity="center_horizontal"
+    android:background="@color/white">
+
+    <FrameLayout
+        android:id="@+id/adContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="bottom"/>
+
+
+    <ImageView
+        android:layout_marginTop="235dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/ic_nametest"
+        android:scaleType="fitXY"/>
+
+    <TextView
+        android:id="@+id/nameApp"
+        android:layout_width="285dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="LOVE COUNTER"
+        android:textSize="32sp"
+        android:fontFamily="@font/pacifico_regular"
+        android:textFontWeight="400"
+        android:shadowColor="#CCC9C9"
+        android:shadowDx="4"
+        android:shadowDy="8"
+        android:shadowRadius="3"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieLoading"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/loading_dots" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="31dp"
+            android:layout_marginTop="80dp"
+            android:gravity="center_horizontal"
+            android:text="This action can contain ads"
+            android:textFontWeight="400"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+
+
+</LinearLayout>

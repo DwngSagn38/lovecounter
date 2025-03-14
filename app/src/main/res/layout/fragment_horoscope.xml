@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    tools:context=".ui.fragment.HoroscopeFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="15dp">
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/back"
+            android:id="@+id/ic_back"/>
+
+        <TextView
+            android:id="@+id/txtTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="Horoscope Test"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:textFontWeight="600"
+            android:fontFamily="@font/plusjakartasans"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="115dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/imgHoroscope1"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:src="@drawable/ic_aquarius"
+                android:background="@drawable/bg_circle"
+                android:padding="16dp"/>
+            <TextView
+                android:id="@+id/txtHoroscope1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Horoscope"
+                android:textSize="18sp"
+                android:textColor="#4B4F58"
+                android:textFontWeight="600"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/plusjakartasans"/>
+                />
+        </LinearLayout>
+        
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="16dp"
+            android:src="@drawable/img_horoscope1"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/imgHoroscope2"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:src="@drawable/ic_aquarius"
+                android:background="@drawable/bg_circle"
+                android:padding="16dp"/>
+            <TextView
+                android:id="@+id/txtHoroscope2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Horoscope"
+                android:textSize="18sp"
+                android:textColor="#4B4F58"
+                android:textFontWeight="600"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/plusjakartasans"/>
+            />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnLoveTest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Love test"
+        android:background="@drawable/bg_btn"
+        android:textColor="@color/white"
+        android:layout_gravity="bottom"/>
+</FrameLayout>

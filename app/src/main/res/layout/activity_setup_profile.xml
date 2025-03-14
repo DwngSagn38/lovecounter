@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingHorizontal="16dp"
+    tools:context=".ui.profile.SetupProfileActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set Up Your Profile"
+        android:textSize="20sp"
+        android:textColor="#1E232E"
+        android:textFontWeight="600"
+        android:fontFamily="@font/plusjakartasans"
+        android:layout_marginTop="25dp"/>
+
+    <TextView
+        android:layout_width="265dp"
+        android:layout_height="wrap_content"
+        android:text="To give you a customize experience
+we need to know your information"
+        android:textSize="16sp"
+        android:textFontWeight="400"
+        android:textColor="#4B4F58"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your name"
+        android:textColor="#1E232E"
+        android:textSize="14sp"
+        android:textFontWeight="400"
+        android:fontFamily="@font/plusjakartasans"
+        android:layout_marginTop="32dp"/>
+
+    <EditText
+        android:id="@+id/edtName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_input"
+        android:hint="Enter name"
+        android:textColor="#1E232E"
+        android:textSize="14sp"
+        android:textFontWeight="400"
+        android:fontFamily="@font/plusjakartasans"
+        android:layout_marginTop="8dp"
+        android:paddingStart="12dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_input"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/edtGender"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/btn_input"
+            android:hint="Enter gender"
+            android:textColor="#1E232E"
+            android:textSize="14sp"
+            android:textFontWeight="400"
+            android:fontFamily="@font/plusjakartasans"
+            android:paddingStart="12dp"/>
+        
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_select"/>
+    </LinearLayout>
+
+</LinearLayout>

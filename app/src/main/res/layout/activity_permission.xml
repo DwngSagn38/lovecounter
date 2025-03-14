@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:paddingHorizontal="16dp"
+    tools:context=".ui.permission.PermissionActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Permission"
+        android:textSize="20sp"
+        android:textFontWeight="600"
+        android:layout_marginTop="45dp"
+        android:fontFamily="@font/plusjakartasans"
+        android:textColor="#1E232E"/>
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="176dp"
+        android:src="@drawable/ic_permission"
+        android:layout_marginTop="32dp"/>
+
+    <TextView
+        android:layout_width="253dp"
+        android:layout_height="wrap_content"
+        android:text="This app needs permissions below to work properly"
+        android:textSize="14sp"
+        android:textFontWeight="400"
+        android:fontFamily="@font/plusjakartasans"
+        android:layout_marginTop="36dp"
+        android:textAlignment="center"
+        android:textColor="#4B4F58"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/bg_gray"
+        android:layout_marginTop="32dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Allow access"
+            android:textSize="16sp"
+            android:textFontWeight="600"
+            android:fontFamily="@font/plusjakartasans"
+            android:textColor="#4B4F58"
+            android:layout_marginStart="16dp"/>
+
+        <Switch
+            android:id="@+id/switchPermission"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:thumbTint="@drawable/switch_thumb_selector"
+            android:trackTint="@drawable/switch_track_selector"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtContinue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Continute"
+        android:textSize="18sp"
+        android:textFontWeight="600"
+        android:fontFamily="@font/plusjakartasans"
+        android:textColor="#FF0845"
+        android:textAlignment="center"
+        android:layout_marginTop="200dp"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/adContainer"
+        android:layout_marginTop="20dp" />
+
+</LinearLayout>
