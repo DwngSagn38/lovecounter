@@ -1,10 +1,16 @@
 package com.example.applove.ui.setting
 
 import android.content.Intent
+import android.view.View
+import com.amazic.ads.util.Admob
+import com.amazic.ads.util.BannerGravity
 import com.example.applove.R
+import com.example.applove.admob.AdConfig
 import com.example.applove.admob.AdsManager
 import com.example.applove.databinding.ActivitySettingBinding
+import com.example.applove.firebase.RemoteConfigManager
 import com.example.applove.ui.fragment.AdFragment
+import com.example.applove.utils.HelperMenu
 import com.example.lovecounter.base.BaseActivity
 import com.example.lovecounter.base.BaseViewModel
 
@@ -12,42 +18,32 @@ class SettingActivity : BaseActivity<ActivitySettingBinding, BaseViewModel>() {
     override fun createBinding() = ActivitySettingBinding.inflate(layoutInflater)
 
     override fun setViewModel() = BaseViewModel()
+    private var helperMenu: HelperMenu? = null
 
-    private var message: String = ""
+
     override fun initView() {
         super.initView()
 
-//        val remoteConfig = FirebaseRemoteConfig.getInstance()
-//        remoteConfig.fetchAndActivate()
-//            .addOnCompleteListener { task ->
-//                if (task.isSuccessful) {
-//                    message = remoteConfig.getString("ads")
-//                    binding.txtSetting.text = message
-//                    Log.d("RemoteConfig", "Giá trị từ Firebase: $message")
-//                } else {
-//                    Log.e("RemoteConfig", "Lỗi khi lấy dữ liệu từ Firebase")
-//                }
-//            }
-//
-
-
-        binding.imgBack.setOnClickListener {
-            finish()
+        binding.apply {
+            imgBack.setOnClickListener { finish() }
+            llLanguage.setOnClickListener { startActivity(Intent(this@SettingActivity, LanguageActivity::class.java)) }
+            llPolicy.setOnClickListener { helperMenu?.showPolicy() }
+            llRate.setOnClickListener { helperMenu?.showDialogRate(true) }
+            llShare.setOnClickListener { helperMenu?.showShareApp() }
+            llFeedback.setOnClickListener { helperMenu?.showDialogFeedback() }
         }
 
-        binding.llLanguage.setOnClickListener {
-            startActivity(Intent(this, LanguageActivity::class.java))
+        val idBannerAd = AdConfig.getDefaultAdId("banner_ad_id")
+        if(RemoteConfigManager.getBoolean("banner_ad_id") && !idBannerAd.isNullOrBlank()){
+            Admob.getInstance().loadBanner(this, idBannerAd, true)
+            binding.include.visibility = View.VISIBLE
+        }else{
+            binding.include.visibility = View.GONE
         }
-
-        // Load AdFragment vào FragmentContainerView
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.adFragmentContainer, AdFragment())
-            .commit()
-
     }
 
-//    override fun onResume() {
-//        super.onResume()
-//        AdsManager.showAdIfAvailable(this)
-//    }
+    override fun dataObservable() {
+        helperMenu = HelperMenu(this)
+    }
+
 }

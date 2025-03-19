@@ -10,7 +10,7 @@
         android:id="@+id/txtLoveTest"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Love Test"
+        android:text="@string/love_test"
         android:textSize="20sp"
         android:fontFamily="@font/plusjakartasans"
         android:textColor="#1E232E"
@@ -27,23 +27,25 @@
         android:padding="20dp">
 
         <TextView
+            android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Name Test"
+            android:fontFamily="@font/plusjakartasans"
+            android:text="@string/name_test"
             android:textColor="#1E232E"
-            android:textSize="20sp"
             android:textFontWeight="600"
-            android:fontFamily="@font/plusjakartasans"/>
+            android:textSize="20sp" />
 
         <TextView
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="Discover your compatibility by entering your name"
-            android:textColor="#4B4F58"
-            android:textSize="12sp"
-            android:textFontWeight="400"
+            android:layout_below="@+id/textView2"
+            android:layout_marginTop="7dp"
             android:fontFamily="@font/plusjakartasans"
-            android:layout_marginTop="36dp"/>
+            android:text="@string/name_test_desc"
+            android:textColor="#4B4F58"
+            android:textFontWeight="400"
+            android:textSize="12sp" />
         
         <ImageView
             android:layout_width="80dp"
@@ -62,23 +64,25 @@
         android:padding="20dp">
 
         <TextView
+            android:id="@+id/textView"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="Horoscope Test"
+            android:fontFamily="@font/plusjakartasans"
+            android:text="@string/horoscope_test"
             android:textColor="#1E232E"
-            android:textSize="20sp"
             android:textFontWeight="600"
-            android:fontFamily="@font/plusjakartasans"/>
+            android:textSize="20sp" />
 
         <TextView
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="Try a cute zodiac compatibility test with your crush"
-            android:textColor="#4B4F58"
-            android:textSize="12sp"
-            android:textFontWeight="400"
+            android:layout_below="@+id/textView"
+            android:layout_marginTop="7dp"
             android:fontFamily="@font/plusjakartasans"
-            android:layout_marginTop="36dp"/>
+            android:text="@string/horoscope_test_desc"
+            android:textColor="#4B4F58"
+            android:textFontWeight="400"
+            android:textSize="12sp" />
 
         <ImageView
             android:id="@+id/imghoroscope"

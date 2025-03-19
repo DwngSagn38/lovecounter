@@ -14,6 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.example.applove.R
 import com.example.applove.admob.AdsManager
 import com.example.applove.databinding.ActivityStartDateBinding
 import com.example.applove.roomdb.DBHelper
@@ -35,8 +36,8 @@ class StartDateActivity : BaseActivity<ActivityStartDateBinding, DateViewModel>(
     @RequiresApi(Build.VERSION_CODES.O)
     override fun initView() {
         super.initView()
-        setColorTitle()
 
+        setColorTitle()
 
         binding.icBack.setOnClickListener {
             finish()
@@ -49,7 +50,7 @@ class StartDateActivity : BaseActivity<ActivityStartDateBinding, DateViewModel>(
         binding.btnDone.setOnClickListener {
             val selectedDate = binding.txtDate.text.toString()
             viewModel.insertOrReplaceDate(selectedDate)
-            Toast.makeText(this, "Đã lưu ngày: $selectedDate", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.save_date, Toast.LENGTH_SHORT).show()
             lifecycleScope.launch {
                 delay(500)
                 startActivity(Intent(this@StartDateActivity, MainActivity::class.java))
@@ -83,17 +84,21 @@ class StartDateActivity : BaseActivity<ActivityStartDateBinding, DateViewModel>(
         viewModel.getSavedDate()
     }
 
+    override fun dataObservable() {
+
+    }
+
     private fun setColorTitle(){
-        val text = "Start Date"
+        val text = getString(R.string.start_date)
         val spannable = SpannableString(text)
-
         // Set màu đỏ cho "Counter"
-        spannable.setSpan(
-            ForegroundColorSpan(Color.RED), // Màu đỏ
-            6, text.length,
-            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
-
+        if (text.length >= 7) {
+            spannable.setSpan(
+                ForegroundColorSpan(Color.RED), // Màu đỏ
+                6, text.length,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+        }
         // Set text cho TextView
         binding.txtTitle.text = spannable
     }
@@ -110,57 +115,57 @@ class StartDateActivity : BaseActivity<ActivityStartDateBinding, DateViewModel>(
             { _, selectedYear, selectedMonth, selectedDay ->
                 val selectedDate = String.format("%02d/%02d/%04d", selectedDay, selectedMonth + 1, selectedYear)
                 binding.txtDate.setText(selectedDate)
-
             },
             year, month, day
         )
-
+        // Giới hạn chỉ chọn ngày hôm nay trở về trước
+        datePickerDialog.datePicker.maxDate = System.currentTimeMillis()
         datePickerDialog.show()
     }
 
-    private fun sendNotificationToUser(title: String, message: String) {
-        val jsonBody = JSONObject()
-        val notification = JSONObject()
-        val data = JSONObject()
-
-        try {
-            notification.put("title", title)
-            notification.put("body", message)
-
-            data.put("title", title)
-            data.put("body", message)
-
-            jsonBody.put("to", "/topics/all") // Gửi đến tất cả người dùng đăng ký
-            jsonBody.put("notification", notification)
-            jsonBody.put("data", data)
-
-            val url = "https://fcm.googleapis.com/fcm/send"
-            val request = object : StringRequest(
-                Method.POST, url,
-                Response.Listener<String> { response ->
-                    Log.d("FCM", "Thông báo đã gửi: $response")
-                },
-                Response.ErrorListener { error ->
-                    Log.e("FCM", "Lỗi gửi thông báo: ${error.message}")
-                }
-            ) {
-                override fun getHeaders(): Map<String, String> {
-                    val headers = HashMap<String, String>()
-                    headers["Authorization"] = "key=BH2-gLs4OJ0G6vf_HTCF6qSpYdcxbP2b13BccOzgUmLWU3qTj3XdFFcERli-jd8mTFxyqU-FdoW8AFcBn7tH8GM" // server key trong Firebase
-                    headers["Content-Type"] = "application/json"
-                    return headers
-                }
-
-                override fun getBody(): ByteArray {
-                    return jsonBody.toString().toByteArray(Charsets.UTF_8)
-                }
-            }
-
-            Volley.newRequestQueue(this).add(request)
-
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
+//    private fun sendNotificationToUser(title: String, message: String) {
+//        val jsonBody = JSONObject()
+//        val notification = JSONObject()
+//        val data = JSONObject()
+//
+//        try {
+//            notification.put("title", title)
+//            notification.put("body", message)
+//
+//            data.put("title", title)
+//            data.put("body", message)
+//
+//            jsonBody.put("to", "/topics/all") // Gửi đến tất cả người dùng đăng ký
+//            jsonBody.put("notification", notification)
+//            jsonBody.put("data", data)
+//
+//            val url = "https://fcm.googleapis.com/fcm/send"
+//            val request = object : StringRequest(
+//                Method.POST, url,
+//                Response.Listener<String> { response ->
+//                    Log.d("FCM", "Thông báo đã gửi: $response")
+//                },
+//                Response.ErrorListener { error ->
+//                    Log.e("FCM", "Lỗi gửi thông báo: ${error.message}")
+//                }
+//            ) {
+//                override fun getHeaders(): Map<String, String> {
+//                    val headers = HashMap<String, String>()
+//                    headers["Authorization"] = "key=BH2-gLs4OJ0G6vf_HTCF6qSpYdcxbP2b13BccOzgUmLWU3qTj3XdFFcERli-jd8mTFxyqU-FdoW8AFcBn7tH8GM" // server key trong Firebase
+//                    headers["Content-Type"] = "application/json"
+//                    return headers
+//                }
+//
+//                override fun getBody(): ByteArray {
+//                    return jsonBody.toString().toByteArray(Charsets.UTF_8)
+//                }
+//            }
+//
+//            Volley.newRequestQueue(this).add(request)
+//
+//        } catch (e: Exception) {
+//            e.printStackTrace()
+//        }
+//    }
 
 }

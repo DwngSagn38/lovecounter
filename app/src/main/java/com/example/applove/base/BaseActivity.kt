@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.viewbinding.ViewBinding
 import androidx.appcompat.app.AppCompatActivity
 import com.example.applove.admob.AdsManager
+import com.example.applove.utils.SystemUtil
 import com.google.android.gms.ads.MobileAds
 
 
@@ -20,12 +21,11 @@ abstract class BaseActivity<VB : ViewBinding, V : ViewModel> : AppCompatActivity
     protected open fun initView() {}
     protected open fun bindView() {}
     protected open fun viewModel() {}
-
-    open fun initData() {}
+    protected abstract fun dataObservable()
 
     override fun onCreate(savedInstanceState : Bundle?){
         super.onCreate(savedInstanceState)
-
+        SystemUtil.setLocale(this)
         binding = createBinding()
         setContentView(binding.root)
         binding.root.setBackgroundColor(Color.WHITE)
@@ -33,7 +33,7 @@ abstract class BaseActivity<VB : ViewBinding, V : ViewModel> : AppCompatActivity
         viewModel()
         initView()
         bindView()
-
+        dataObservable()
 
         window.decorView.systemUiVisibility = (
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE or

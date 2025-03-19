@@ -36,7 +36,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.applove.R
+import com.example.applove.adpater.AvatarAdapter
 import com.example.applove.databinding.DialogInfomationBinding
 import com.example.applove.roomdb.repository.PersonRepository
 import com.example.applove.roomdb.DBHelper
@@ -64,6 +67,27 @@ class GenderBottomSheetDialog() : BottomSheetDialogFragment() {
     private var person: PersonModel? = null
 
     private var uriImage: Uri? = null
+    private var selectedAvatar: Int? = null
+
+    private val avatarList = listOf(
+        R.drawable.img_male,
+        R.drawable.img_female,
+        R.drawable.avatar1,
+        R.drawable.avatar2,
+        R.drawable.avatar3,
+        R.drawable.avatar4,
+        R.drawable.avatar5,
+        R.drawable.avatar6,
+        R.drawable.avatar7,
+        R.drawable.avatar8,
+        R.drawable.avatar9,
+        R.drawable.avatar10,
+        R.drawable.avatar11,
+        R.drawable.avatar12,
+        R.drawable.avatar13,
+        R.drawable.avatar14,
+    )
+
 
     // Launcher cho Android 13+
     private val pickImageLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
@@ -144,7 +168,12 @@ class GenderBottomSheetDialog() : BottomSheetDialogFragment() {
         val name = if (binding.edtName.text.isNullOrBlank()) person?.name ?: "" else binding.edtName.text.toString()
         val gender = if (binding.edtGender.text.isNullOrBlank()) person?.gender ?: "" else binding.edtGender.text.toString()
         val birthday = if (binding.edtBirthday.text.isNullOrBlank()) person?.birthday ?: "" else binding.edtBirthday.text.toString()
-        val imagePath = uriImage?.toString() ?: person?.image ?: ""
+        // Xác định ảnh được chọn
+        val imagePath = when {
+            uriImage != null -> uriImage.toString() // Nếu chọn ảnh từ thư viện/camera
+            selectedAvatar != null -> selectedAvatar.toString() // Nếu chọn avatar mặc định
+            else -> person?.image ?: "" // Nếu không chọn ảnh nào, giữ ảnh cũ
+        }
 
         val newPerson = PersonModel(person!!.id, name, gender, birthday, imagePath);
         // Thực hiện cập nhật vào database (nếu cần)
@@ -155,10 +184,10 @@ class GenderBottomSheetDialog() : BottomSheetDialogFragment() {
                 requireActivity().supportFragmentManager.setFragmentResult("updatePerson", Bundle())
 //                personViewModel.refreshData()
                 delay(300)
-                Toast.makeText(requireContext(), "Save $result!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), R.string.save_person, Toast.LENGTH_SHORT).show()
                 dismiss()
             }else{
-                Toast.makeText(requireContext(), "Save $result!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), R.string.save_person_fail, Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -179,7 +208,13 @@ class GenderBottomSheetDialog() : BottomSheetDialogFragment() {
             if (imageFile!!.exists()) {
                 binding.imgGender.setImageURI(Uri.fromFile(imageFile)) // Hiển thị từ file
             } else {
-                binding.imgGender.setImageURI(Uri.parse(it.image)) // Hiển thị từ Uri nếu có
+                person?.image?.let { path ->
+                    if (path.toIntOrNull() != null) {
+                        binding.imgGender.setImageResource(path.toInt()) // Hiển thị avatar mặc định
+                    } else {
+                        binding.imgGender.setImageURI(Uri.parse(path)) // Hiển thị ảnh từ thư viện/camera
+                    }
+                }
             }
 
             if (it.image.equals("")){
@@ -282,6 +317,7 @@ class GenderBottomSheetDialog() : BottomSheetDialogFragment() {
 
         val btnCamera = dialog.findViewById<LinearLayout>(R.id.llCamera)
         val btnGallery = dialog.findViewById<LinearLayout>(R.id.llGallery)
+        val btnAvatar = dialog.findViewById<LinearLayout>(R.id.llDefault)
 
         btnCamera.setOnClickListener {
             if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
@@ -303,12 +339,17 @@ class GenderBottomSheetDialog() : BottomSheetDialogFragment() {
                 dialog.dismiss()
             }
         }
+
+        btnAvatar.setOnClickListener {
+            showAvatarBottomSheet()
+            dialog.dismiss()
+        }
     }
     private val requestCameraPermission = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
         if (isGranted) {
             openCamera()
         } else {
-            Toast.makeText(requireContext(), "Bạn cần cấp quyền để mở camera!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), R.string.permission_camera, Toast.LENGTH_SHORT).show()
         }
     }
     private fun openCamera() {
@@ -327,6 +368,22 @@ class GenderBottomSheetDialog() : BottomSheetDialogFragment() {
             }
         }
         return filePath ?: uri.path // Nếu không có _data, trả về path mặc định
+    }
+
+    private fun showAvatarBottomSheet() {
+        val bottomSheetDialog = BottomSheetDialog(requireContext())
+        val view = layoutInflater.inflate(R.layout.dialog_choose_backgound, null)
+        bottomSheetDialog.setContentView(view)
+
+        val recyclerView = view.findViewById<RecyclerView>(R.id.rcvBackground)
+        recyclerView.layoutManager = GridLayoutManager(requireContext(), 3) // Hiển thị 3 cột
+        recyclerView.adapter = AvatarAdapter(avatarList) { selectedAvatarRes ->
+            selectedAvatar = selectedAvatarRes // Lưu ID ảnh avatar
+            uriImage = null
+            binding.imgGender.setImageResource(selectedAvatarRes) // Đặt avatar cho ImageView
+            bottomSheetDialog.dismiss()
+        }
+        bottomSheetDialog.show()
     }
 
 }

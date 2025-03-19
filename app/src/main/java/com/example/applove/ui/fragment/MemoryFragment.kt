@@ -18,7 +18,7 @@ class MemoryFragment : BaseFragment<FragmentMemoryBinding>() {
     override fun initView() {
         super.initView()
         viewBinding.btnAdd.setOnClickListener {
-            Toast.makeText(requireContext(), "Chuc nang chua lam!!!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), R.string.coming_soon, Toast.LENGTH_SHORT).show()
         }
     }
 }

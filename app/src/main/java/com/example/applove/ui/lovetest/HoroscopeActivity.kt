@@ -33,4 +33,8 @@ class HoroscopeActivity : BaseActivity<ActivityHoroscopeBinding, BaseViewModel>(
 
     }
 
+    override fun dataObservable() {
+
+    }
+
 }

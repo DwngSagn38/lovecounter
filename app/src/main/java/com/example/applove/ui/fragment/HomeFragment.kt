@@ -173,7 +173,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 if (imageFile.exists()) {
                     viewBinding.imgMale.setImageURI(Uri.fromFile(imageFile)) // Hiển thị từ file
                 } else {
-                    viewBinding.imgMale.setImageURI(Uri.parse(person.image)) // Hiển thị từ Uri nếu có
+                    // Kiểm tra xem imagePath là URI hay resource ID
+                    person.image?.let { path ->
+                        if (path.toIntOrNull() != null) {
+                            viewBinding.imgMale.setImageResource(path.toInt()) // Hiển thị avatar mặc định
+                        } else {
+                            viewBinding.imgMale.setImageURI(Uri.parse(path)) // Hiển thị ảnh từ thư viện/camera
+                        }
+                    }
                 }
             }
 
@@ -195,7 +202,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 if (imageFile.exists()) {
                     viewBinding.imgFemale.setImageURI(Uri.fromFile(imageFile)) // Hiển thị từ file
                 } else {
-                    viewBinding.imgFemale.setImageURI(Uri.parse(person.image)) // Hiển thị từ Uri nếu có
+                    // Kiểm tra xem imagePath là URI hay resource ID
+                    person.image?.let { path ->
+                        if (path.toIntOrNull() != null) {
+                            viewBinding.imgFemale.setImageResource(path.toInt()) // Hiển thị avatar mặc định
+                        } else {
+                            viewBinding.imgFemale.setImageURI(Uri.parse(path)) // Hiển thị ảnh từ thư viện/camera
+                        }
+                    }
                 }
             }
 

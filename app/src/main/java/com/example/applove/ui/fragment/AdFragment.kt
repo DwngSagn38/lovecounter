@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.applove.R
+import com.example.applove.admob.AdConfig
 import com.example.applove.databinding.FragmentAdBinding
 import com.example.applove.firebase.RemoteConfigManager
 import com.example.lovecounter.base.BaseFragment
@@ -35,7 +36,7 @@ class AdFragment : BaseFragment<FragmentAdBinding>() {
 
     private fun loadBannerAd() {
         val adView = AdView(requireContext())
-        adView.adUnitId = RemoteConfigManager.getString("banner_ad_id")
+        adView.adUnitId = AdConfig.getDefaultAdId("banner_ad_id").toString()
         adView.setAdSize(getAdSize())
 
         val extras = Bundle()

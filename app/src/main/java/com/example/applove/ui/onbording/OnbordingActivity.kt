@@ -5,11 +5,14 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
+import android.util.Log
+import android.view.View
 import androidx.core.content.ContextCompat
-import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
+import com.amazic.ads.callback.InterCallback
+import com.amazic.ads.util.Admob
 import com.example.applove.R
-import com.example.applove.admob.AdsManager
+import com.example.applove.admob.AdConfig
 import com.example.applove.databinding.ActivityOnbordingBinding
 import com.example.applove.firebase.RemoteConfigManager
 import com.example.applove.ui.main.MainActivity
@@ -17,9 +20,10 @@ import com.example.applove.ui.permission.PermissionActivity
 import com.example.lovecounter.base.BaseActivity
 import com.example.lovecounter.base.BaseViewModel
 import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdSize
-import com.google.android.gms.ads.AdView
-import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
+
 
 class OnbordingActivity : BaseActivity<ActivityOnbordingBinding, BaseViewModel>() {
 
@@ -27,7 +31,7 @@ class OnbordingActivity : BaseActivity<ActivityOnbordingBinding, BaseViewModel>(
 
     override fun createBinding() = ActivityOnbordingBinding.inflate(layoutInflater)
 
-    override fun setViewModel()=  BaseViewModel()
+    override fun setViewModel() = BaseViewModel()
 
     override fun initView() {
         super.initView()
@@ -35,11 +39,21 @@ class OnbordingActivity : BaseActivity<ActivityOnbordingBinding, BaseViewModel>(
         viewPager = findViewById(R.id.viewPage)
 
         val onboardingItem = listOf(
-            OnboardingItem(R.drawable.ic_onboarding1, "Test Your Relationship", "Find out your love compatibility\n" +
-                    " with your partner"),
-            OnboardingItem(R.drawable.ic_onboarding2, "Love Day Counter", "Keep track of how long you \n" +
-                    "have been together"),
-            OnboardingItem(R.drawable.ic_onboarding3, "Memorable Moments", "Preserve cherished moments together")
+            OnboardingItem(
+                R.drawable.ic_onboarding1,
+                getString(R.string.title_intro1),
+                getString(R.string.description_intro1)
+            ),
+            OnboardingItem(
+                R.drawable.ic_onboarding2,
+                getString(R.string.title_intro2),
+                getString(R.string.description_intro2)
+            ),
+            OnboardingItem(
+                R.drawable.ic_onboarding3,
+                getString(R.string.title_intro3),
+                getString(R.string.description_intro3)
+            )
         )
 
         val adapter = OnboardingAdapter(onboardingItem)
@@ -50,21 +64,19 @@ class OnbordingActivity : BaseActivity<ActivityOnbordingBinding, BaseViewModel>(
         binding.txtNext.setOnClickListener {
             if (viewPager.currentItem < adapter.itemCount - 1) {
                 viewPager.currentItem = viewPager.currentItem + 1
-            }
-            else if (viewPager.currentItem == onboardingItem.size - 1) {
-                AdsManager.showInterstitialAd(this){
-                    if (hasPermissions()) {
-                        startActivity(Intent(this, MainActivity::class.java))
-                        finish()
-                    } else {
-                        startActivity(Intent(this, PermissionActivity::class.java))
-                    }
-                }
+            } else if (viewPager.currentItem == onboardingItem.size - 1) {
+                showInterAds()
             }
         }
 
+        showNativeAds()
+
         // Load quảng cáo native
-        AdsManager.loadNativeAd(this, binding.nativeAdView)
+//        AdsManager.loadNativeAd(this, binding.nativeAdView)
+
+    }
+
+    override fun dataObservable() {
 
     }
 
@@ -95,4 +107,44 @@ class OnbordingActivity : BaseActivity<ActivityOnbordingBinding, BaseViewModel>(
     }
 
 
+    private fun showNativeAds(){
+        val idNativeAd = AdConfig.getDefaultAdId("native_ad_id")
+        val checkNativeAd = RemoteConfigManager.getBoolean("native_ad_id")
+
+        if (checkNativeAd && !idNativeAd.isNullOrEmpty()) {
+            binding.nativeAds.visibility = View.VISIBLE
+            Admob.getInstance()
+                .loadNativeAd(this, idNativeAd, binding.nativeAds, R.layout.layout_native_ad)
+        } else {
+            binding.nativeAds.visibility = View.GONE
+        }
+    }
+
+    private fun showInterAds(){
+        val idInterAd = AdConfig.getDefaultAdId("inter_ad_id")
+        val checkInterAd = RemoteConfigManager.getBoolean("inter_ad_id")
+        Admob.getInstance().setOpenActivityAfterShowInterAds(false)
+        if (!idInterAd.isNullOrEmpty() && checkInterAd) {
+            val interCallback: InterCallback = object : InterCallback() {
+                override fun onNextAction() {
+                    super.onNextAction()
+                    Admob.getInstance().setOpenActivityAfterShowInterAds(true)
+                    navigateToNextScreen()
+                }
+            }
+            Admob.getInstance().loadSplashInterAds2(this, idInterAd, 10, interCallback)
+        }else{
+            navigateToNextScreen()
+        }
+    }
+
+    // Hàm điều hướng sau khi đóng quảng cáo
+    private fun navigateToNextScreen() {
+        if (hasPermissions()) {
+            startActivity(Intent(this@OnbordingActivity, MainActivity::class.java))
+            finish()
+        } else {
+            startActivity(Intent(this@OnbordingActivity, PermissionActivity::class.java))
+        }
+    }
 }

@@ -19,13 +19,25 @@ class LanguageAdapter(
 
         fun bind(language: LanguageModel, position: Int) {
             binding.txtLanguage.text = language.name
-            binding.imgLanguage.setImageResource(language.icon)
 
             if (position == selectedPosition) {
                 binding.root.setBackgroundResource(R.drawable.bg_red)
             } else {
                 binding.root.setBackgroundResource(R.drawable.bg_gray)
             }
+
+            when (language.code) {
+                "en" -> binding.imgLanguage.setImageResource(R.drawable.ic_english)
+                "de" -> binding.imgLanguage.setImageResource(R.drawable.ic_german)
+                "es" -> binding.imgLanguage.setImageResource(R.drawable.ic_spanish)
+                "fr" -> binding.imgLanguage.setImageResource(R.drawable.ic_french)
+                "hi" -> binding.imgLanguage.setImageResource(R.drawable.ic_hindi)
+                "in" -> binding.imgLanguage.setImageResource(R.drawable.flag_indonesia)
+                "pt" -> binding.imgLanguage.setImageResource(R.drawable.ic_portuguese)
+                "vi" -> binding.imgLanguage.setImageResource(R.drawable.flag_vie)
+                "ja" -> binding.imgLanguage.setImageResource(R.drawable.flag_japan)
+            }
+
             binding.root.setOnClickListener {
                 selectedPosition = position
                 notifyDataSetChanged()
@@ -46,4 +58,5 @@ class LanguageAdapter(
     }
 
     override fun getItemCount() = languages.size
+
 }

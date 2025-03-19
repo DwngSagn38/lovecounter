@@ -10,13 +10,12 @@
     android:gravity="center_horizontal"
     android:background="@color/white">
 
-    <FrameLayout
-        android:id="@+id/adContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="bottom"/>
-
+<!--    <FrameLayout-->
+<!--        android:id="@+id/adContainer"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_gravity="bottom"/>-->
 
     <ImageView
         android:layout_marginTop="235dp"
@@ -27,10 +26,11 @@
 
     <TextView
         android:id="@+id/nameApp"
-        android:layout_width="285dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="LOVE COUNTER"
+        android:textAlignment="center"
         android:textSize="32sp"
         android:fontFamily="@font/pacifico_regular"
         android:textFontWeight="400"
@@ -62,6 +62,11 @@
             android:textSize="16sp" />
     </RelativeLayout>
 
-
+    <include
+        android:id="@+id/include"
+        layout="@layout/layout_banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
 
 </LinearLayout>

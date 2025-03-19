@@ -16,7 +16,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Information"
+        android:text="@string/information"
         android:textColor="#1E232E"
         android:textSize="16sp"
         android:textFontWeight="600"
@@ -36,7 +36,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tap to change photo"
+        android:text="@string/tap_to_change"
         android:textColor="#4B4F58"
         android:textSize="14sp"
         android:textFontWeight="400"
@@ -47,7 +47,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Name"
+        android:text="@string/name"
         android:textColor="#1E232E"
         android:textSize="14sp"
         android:textFontWeight="400"
@@ -71,7 +71,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Gender"
+        android:text="@string/gender"
         android:textColor="#1E232E"
         android:textSize="14sp"
         android:textFontWeight="400"
@@ -106,7 +106,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Birthday"
+        android:text="@string/birthday"
         android:textColor="#1E232E"
         android:textSize="14sp"
         android:textFontWeight="400"
@@ -141,7 +141,7 @@
         android:id="@+id/btnSave"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:text="Save"
+        android:text="@string/save"
         android:textColor="@color/white"
         android:background="@drawable/bg_btn"
         android:backgroundTint="@color/red"

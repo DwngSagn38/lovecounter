@@ -14,9 +14,10 @@
         android:layout_gravity="center_horizontal"/>
 
     <TextView
+        android:id="@+id/txtChoose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Choose your background"
+        android:text="@string/choose_avatar"
         android:textColor="#1E232E"
         android:textSize="16sp"
         android:textFontWeight="600"

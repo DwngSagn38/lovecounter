@@ -39,7 +39,7 @@
             android:id="@+id/txtNext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Next"
+            android:text="@string/next"
             android:textSize="16sp"
             android:textFontWeight="600"
             android:fontFamily="@font/plusjakartasans"
@@ -48,13 +48,24 @@
 
     </LinearLayout>
 
-    <com.google.android.gms.ads.nativead.NativeAdView
-        android:id="@+id/native_ad_view"
+<!--    <com.google.android.gms.ads.nativead.NativeAdView-->
+<!--        android:id="@+id/native_ad_view"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:visibility="gone"-->
+<!--        android:layout_gravity="bottom"-->
+<!--        />-->
+
+    <FrameLayout
+        android:id="@+id/native_ads"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+<!--    <include layout="@layout/ads_native_shimer"/>-->
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/layout_banner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:layout_gravity="bottom"
-        />
-
-
+        android:visibility="gone"/>
 </LinearLayout>

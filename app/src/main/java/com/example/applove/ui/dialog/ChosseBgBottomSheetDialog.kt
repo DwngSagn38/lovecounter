@@ -90,6 +90,13 @@ class ChosseBgBottomSheetDialog : BottomSheetDialogFragment() {
                 backgroundViewModel.saveBackground("android.resource://${requireContext().packageName}/${R.drawable.bg_backround1}")
                 backgroundViewModel.saveBackground("android.resource://${requireContext().packageName}/${R.drawable.bg_default}")
                 backgroundViewModel.saveBackground("android.resource://${requireContext().packageName}/${R.drawable.bg_default1}")
+                backgroundViewModel.saveBackground("android.resource://${requireContext().packageName}/${R.drawable.bg_default2}")
+                backgroundViewModel.saveBackground("android.resource://${requireContext().packageName}/${R.drawable.bg_default3}")
+                backgroundViewModel.saveBackground("android.resource://${requireContext().packageName}/${R.drawable.bg_default4}")
+                backgroundViewModel.saveBackground("android.resource://${requireContext().packageName}/${R.drawable.bg_default5}")
+                backgroundViewModel.saveBackground("android.resource://${requireContext().packageName}/${R.drawable.bg_default6}")
+                backgroundViewModel.saveBackground("android.resource://${requireContext().packageName}/${R.drawable.bg_default7}")
+                backgroundViewModel.saveBackground("android.resource://${requireContext().packageName}/${R.drawable.bg_default8}")
             } else {
                 adapter.submitList(backgrounds)
                 adapter.notifyDataSetChanged() // Cập nhật RecyclerView ngay lập tức

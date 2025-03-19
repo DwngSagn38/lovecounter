@@ -5,10 +5,15 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.amazic.ads.util.Admob
+import com.amazic.ads.util.BannerGravity
 import com.example.applove.R
+import com.example.applove.admob.AdConfig
 import com.example.applove.databinding.ActivityPermissionBinding
 import com.example.applove.firebase.RemoteConfigManager
 import com.example.applove.ui.main.MainActivity
@@ -38,22 +43,21 @@ class PermissionActivity : BaseActivity<ActivityPermissionBinding, BaseViewModel
                 savePermission(true)
                 startActivity(Intent(this, MainActivity::class.java))
             }else{
-                Toast.makeText(this, "Vui lòng cấp quyền!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.permission_continue, Toast.LENGTH_SHORT).show()
             }
         }
 
-        // Khởi tạo Mobile Ads SDK
-        MobileAds.initialize(this) {}
+        val idBannerAd = AdConfig.getDefaultAdId("banner_ad_id")
+        if(RemoteConfigManager.getBoolean("banner_ad_id") && !idBannerAd.isNullOrBlank()){
+            Admob.getInstance().loadBanner(this, idBannerAd,true)
+            binding.include.visibility = View.VISIBLE
+        }else{
+            binding.include.visibility = View.GONE
+        }
+    }
 
-        val adView = AdView(this)
-        adView.adUnitId = RemoteConfigManager.getString("banner_ad_id")
-        adView.setAdSize(AdSize.MEDIUM_RECTANGLE)  // Thay đổi kích thước ở đây
+    override fun dataObservable() {
 
-        binding.adContainer.addView(adView) // Thêm AdView vào layout
-
-        // Tải quảng cáo
-        val adRequest = AdRequest.Builder().build()
-        adView.loadAd(adRequest)
     }
 
     private fun checkAndRequestPermission() {
@@ -83,7 +87,7 @@ class PermissionActivity : BaseActivity<ActivityPermissionBinding, BaseViewModel
         if (deniedPermissions.isNotEmpty()) {
             ActivityCompat.requestPermissions(this, deniedPermissions.toTypedArray(), 1001)
         } else {
-            Toast.makeText(this, "Quyền đã được cấp!", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "Quyền đã được cấp!", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -94,9 +98,9 @@ class PermissionActivity : BaseActivity<ActivityPermissionBinding, BaseViewModel
 
         if (requestCode == 1001) {
             if (grantResults.all { it == PackageManager.PERMISSION_GRANTED }) {
-                Toast.makeText(this, "Đã cấp quyền thành công!", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this, "Đã cấp quyền thành công!", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this, "Quyền bị từ chối!", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this, "Quyền bị từ chối!", Toast.LENGTH_SHORT).show()
                 binding.switchPermission.isChecked = false
             }
         }

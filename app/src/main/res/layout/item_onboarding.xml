@@ -16,7 +16,7 @@
         android:id="@+id/txtTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Test Your Relationship"
+        android:text="@string/title_intro1"
         android:textSize="24sp"
         android:layout_marginTop="26dp"
         android:textFontWeight="600"
@@ -26,8 +26,7 @@
         android:id="@+id/txtDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Find out your love compatibility \n
- with your partner"
+        android:text="@string/description_intro1"
         android:textSize="14sp"
         android:gravity="center"
         android:fontFamily="@font/plusjakartasans"

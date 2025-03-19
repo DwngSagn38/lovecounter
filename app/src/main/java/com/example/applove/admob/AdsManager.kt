@@ -36,8 +36,8 @@ object AdsManager : Application.ActivityLifecycleCallbacks {
 
     // 🔹 Load Native Ad
     fun loadNativeAd(activity: Activity, adContainer: FrameLayout) {
-        val adUnitId = RemoteConfigManager.getString("native_ad_id")
-        val adLoader = AdLoader.Builder(activity, adUnitId)
+        val adUnitId = AdConfig.getDefaultAdId("native_ad_id")
+        val adLoader = AdLoader.Builder(activity, adUnitId!!)
             .forNativeAd { ad ->
                 nativeAd = ad
                 val inflater = LayoutInflater.from(activity)
@@ -76,15 +76,20 @@ object AdsManager : Application.ActivityLifecycleCallbacks {
     }
     // 🔹 Load App Open Ad
     private fun loadAppOpenAd(application: Application) {
-        val adUnitId = RemoteConfigManager.getString("open_ad_id")
+        val adUnitId = AdConfig.getDefaultAdId("open_ad_id")
 //        val adUnitId = "ca-app-pub-3940256099942544/9257395921" // Open Ad test ID của Google
+        val checkOpenAd = RemoteConfigManager.getBoolean("open_ad_id")
+        if(!checkOpenAd){
+            appOpenAd = null
+            return
+        }
 
         Log.d("AdsManager", "Id Open Ad: $adUnitId")
 
         val adRequest = AdRequest.Builder().build()
         Log.d("AdsManager", "🔄 Bắt đầu tải Open Ad...") // Log để kiểm tra khi bắt đầu tải
 
-        AppOpenAd.load(application, adUnitId, adRequest,
+        AppOpenAd.load(application, adUnitId!!, adRequest,
             AppOpenAd.APP_OPEN_AD_ORIENTATION_PORTRAIT, object : AppOpenAd.AppOpenAdLoadCallback() {
                 override fun onAdLoaded(ad: AppOpenAd) {
                     appOpenAd = ad
@@ -103,7 +108,6 @@ object AdsManager : Application.ActivityLifecycleCallbacks {
 
     fun showAdIfAvailable( onAdDismissed: () -> Unit) {
         val activity = currentActivity ?: return
-
         if (appOpenAd != null) {
             Log.d("AdsManager", "🎬 Hiển thị Open Ad...")
             appOpenAd!!.fullScreenContentCallback = object : FullScreenContentCallback() {
@@ -133,10 +137,10 @@ object AdsManager : Application.ActivityLifecycleCallbacks {
     private val TAG = "InterstitialAd"
 
     fun loadInterstitialAd(application: Application) {
-        val adUnitId = RemoteConfigManager.getString("inter_ad_id")
+        val adUnitId = AdConfig.getDefaultAdId("inter_ad_id")
 
         val adRequest = AdRequest.Builder().build()
-        InterstitialAd.load(application, adUnitId, adRequest, object : InterstitialAdLoadCallback() {
+        InterstitialAd.load(application, adUnitId!!, adRequest, object : InterstitialAdLoadCallback() {
             override fun onAdLoaded(ad: InterstitialAd) {
                 interstitialAd = ad
                 Log.d(TAG, "Interstitial Ad Loaded")

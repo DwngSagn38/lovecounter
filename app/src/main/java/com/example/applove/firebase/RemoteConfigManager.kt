@@ -11,18 +11,19 @@ object RemoteConfigManager {
 
     init {
         val configSettings = remoteConfigSettings {
-            minimumFetchIntervalInSeconds = 60  // Cập nhật mỗi 1 giờ
+            minimumFetchIntervalInSeconds = 60  // Cập nhật mỗi 1 phut
         }
+
         remoteConfig.setConfigSettingsAsync(configSettings)
 
         // Thiết lập giá trị mặc định
         val defaults: Map<String, Any> = mapOf(
             "show_ad" to true,   // Bật/tắt quảng cáo toàn cục
-            "native_ad_id" to "ca-app-pub-3940256099942544/2247696110",  // ID quảng cáo native
-            "inter_ad_id" to "ca-app-pub-3940256099942544/1033173712",  // ID quảng cáo interstitial
-            "banner_ad_id" to "ca-app-pub-3940256099942544/2014213617",  // ID quảng cáo banner
-            "open_ad_id" to "ca-app-pub-3940256099942544/9257395921", // ID quảng cáo Open App
-            "rewarded_ad_id" to "ca-app-pub-3940256099942544/5224354917"
+            "native_ad_id" to false,  // ID quảng cáo native
+            "inter_ad_id" to false,  // ID quảng cáo interstitial
+            "banner_ad_id" to false,  // ID quảng cáo banner
+            "open_ad_id" to false, // ID quảng cáo Open App
+            "rewarded_ad_id" to false
         )
         remoteConfig.setDefaultsAsync(defaults)
 
@@ -45,5 +46,4 @@ object RemoteConfigManager {
 
     // Hàm get giá trị từ Remote Config
     fun getBoolean(key: String): Boolean = remoteConfig.getBoolean(key)
-    fun getString(key: String): String = remoteConfig.getString(key)
 }

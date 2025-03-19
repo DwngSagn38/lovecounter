@@ -11,31 +11,32 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="20dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginTop="25dp"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/imgBack"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/back"
-                android:visibility="visible"/>
+                android:visibility="visible" />
 
             <TextView
                 android:id="@+id/txtSetting"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Setting"
+                android:fontFamily="@font/plusjakartasans"
                 android:gravity="center"
-                android:textSize="24sp"
-                android:textFontWeight="600"
+                android:text="@string/setting"
                 android:textColor="#1E232E"
-                android:fontFamily="@font/plusjakartasans"/>
+                android:textFontWeight="600"
+                android:textSize="24sp" />
 
         </LinearLayout>
 
@@ -44,149 +45,161 @@
             android:id="@+id/llLanguage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginTop="25dp"
-            android:gravity="center_vertical"
+            android:padding="8dp"
             android:background="@drawable/bg_boder_bottom"
-            >
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/ic_language"/>
+                android:src="@drawable/ic_language" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Language"
-                android:textSize="16sp"
-                android:textFontWeight="500"
-                android:textColor="#1E232E"
                 android:layout_marginLeft="20dp"
-                android:fontFamily="@font/plusjakartasans"/>
+                android:layout_weight="1"
+                android:fontFamily="@font/plusjakartasans"
+                android:text="@string/language"
+                android:textColor="#1E232E"
+                android:textFontWeight="500"
+                android:textSize="16sp" />
 
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/ic_select2"
-                android:layout_gravity="end"/>
+                android:layout_gravity="end"
+                android:src="@drawable/ic_select2" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/llRate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginTop="15dp"
-            android:gravity="center_vertical"
+            android:padding="8dp"
             android:background="@drawable/bg_boder_bottom"
-            >
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/ic_star"/>
+                android:src="@drawable/ic_share" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Rate"
-                android:textSize="16sp"
-                android:textFontWeight="500"
-                android:textColor="#1E232E"
                 android:layout_marginLeft="20dp"
-                android:fontFamily="@font/plusjakartasans"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="15dp"
-            android:gravity="center_vertical"
-            android:background="@drawable/bg_boder_bottom"
-            >
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_share"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Share"
-                android:textSize="16sp"
-                android:textFontWeight="500"
+                android:fontFamily="@font/plusjakartasans"
+                android:text="@string/rate"
                 android:textColor="#1E232E"
-                android:layout_marginLeft="20dp"
-                android:fontFamily="@font/plusjakartasans"/>
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="15dp"
-            android:gravity="center_vertical"
-            android:background="@drawable/bg_boder_bottom"
-            >
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_feetback"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Feedback"
-                android:textSize="16sp"
                 android:textFontWeight="500"
-                android:textColor="#1E232E"
-                android:layout_marginLeft="20dp"
-                android:fontFamily="@font/plusjakartasans"/>
+                android:textSize="16sp" />
 
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/llShare"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginTop="15dp"
-            android:gravity="center_vertical"
+            android:padding="8dp"
             android:background="@drawable/bg_boder_bottom"
-            >
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/ic_policy"/>
+                android:src="@drawable/ic_star" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Privacy Policy"
-                android:textSize="16sp"
-                android:textFontWeight="500"
-                android:textColor="#1E232E"
                 android:layout_marginLeft="20dp"
-                android:fontFamily="@font/plusjakartasans"/>
+                android:layout_weight="1"
+                android:fontFamily="@font/plusjakartasans"
+                android:text="@string/share"
+                android:textColor="#1E232E"
+                android:textFontWeight="500"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/llFeedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:padding="8dp"
+            android:background="@drawable/bg_boder_bottom"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_feetback" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/plusjakartasans"
+                android:text="@string/feedback"
+                android:textColor="#1E232E"
+                android:textFontWeight="500"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llPolicy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:padding="8dp"
+            android:background="@drawable/bg_boder_bottom"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_policy" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/plusjakartasans"
+                android:text="@string/policy"
+                android:textColor="#1E232E"
+                android:textFontWeight="500"
+                android:textSize="16sp" />
 
         </LinearLayout>
     </LinearLayout>
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/adFragmentContainer"
+<!--    <androidx.fragment.app.FragmentContainerView-->
+<!--        android:id="@+id/adFragmentContainer"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="bottom"-->
+<!--        android:layout_alignParentBottom="true"/>-->
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/layout_banner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_alignParentBottom="true"/>
+        android:layout_alignParentBottom="true"
+        android:visibility="visible"/>
 </RelativeLayout>
